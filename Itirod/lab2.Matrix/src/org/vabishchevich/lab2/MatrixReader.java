@@ -6,10 +6,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
+
 public class MatrixReader {
 
 	private File file;
-
+	private static final Logger log = Logger.getLogger(MatrixReader.class.getSimpleName());
+	private static final String MATRIX_READED = "The matrix has been read";
 	public MatrixReader(String fileName) {
 		file = new File(fileName);
 	}
@@ -24,6 +28,7 @@ public class MatrixReader {
 		for (int i = 0; i < rows * cols; i++) {
 			matrix.addElement(sc.nextDouble());
 		}
+		log.info(String.format("%s:\t %s", log.getName(), MATRIX_READED));
 		sc.close();
 		return matrix;
 	}
